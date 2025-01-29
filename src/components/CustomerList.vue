@@ -91,8 +91,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { useAuth } from '../composables/auth';
+import api from '../services/api';
+import { useAuth } from '../auth';
 
 export default {
   setup() {
@@ -121,7 +121,7 @@ export default {
   },
   methods: {
     fetchCustomers() {
-      axios.get(`/api/customers?page=${this.currentPage}&size=${this.pageSize}`)
+      api.get(`/customers?page=${this.currentPage}&size=${this.pageSize}`)
           .then(response => {
             this.customers = response.data.content;
             this.totalPages = response.data.totalPages;
@@ -167,7 +167,7 @@ export default {
       }
     },
     createCustomer(){
-      axios.post('/api/customers', this.form)
+      api.post('/customers', this.form)
           .then(() => {
             this.closeModal();
             this.fetchCustomers();
@@ -177,7 +177,7 @@ export default {
           });
     },
     updateCustomer() {
-      axios.put(`/api/customers/${this.editingCustomer.id}`, this.form)
+      api.put(`/customers/${this.editingCustomer.id}`, this.form)
           .then(() => {
             this.closeModal();
             this.fetchCustomers();
@@ -188,7 +188,7 @@ export default {
     },
     deleteCustomer(id) {
       if (confirm('Are you sure you want to delete this customer?')) {
-        axios.delete(`/api/customers/${id}`)
+        api.delete(`/customers/${id}`)
             .then(() => {
               this.fetchCustomers();
             })
