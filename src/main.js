@@ -1,12 +1,13 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import authService from "./services/authService"; // Import authService
+import './assets/main.css'
 
-authService
-    .init()
-    .then(() => {
-        createApp(App).mount("#app");
-    })
-    .catch((error) => {
-        console.error("Authentication failed", error);
-    });
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import 'bootstrap/dist/css/bootstrap.css';
+
+
+const app = createApp(App)
+
+app.use(router)
+
+app.mount('#app')

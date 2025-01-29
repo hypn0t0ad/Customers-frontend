@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
     "keycloak-js": "^26.1.0",
     "oidc-client-ts": "^3.1.0",
     "pinia": "^2.3.1",
     "vue": "^3.5.13",
+    "vue-oidc-client": "^1.0.0-alpha.5",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
