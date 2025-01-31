@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Silent Check SSo</title>
+</head>
+<body>
+<script src="../node_modules/keycloak-js/dist/keycloak.js"></script>
+<script>
+    const keycloak = new Keycloak({
+        url: 'http://localhost:8180',
+        realm: 'customers-realm',
+        clientId: 'customers-id',
+    })
+    keycloak.init({
+        onLoad: 'check-sso'
+    }).then(() => {
+        window.close();
+    })
+</script>
+</body>
+</html>
